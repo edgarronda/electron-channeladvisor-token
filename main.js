@@ -8,7 +8,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 400, height: 200})
+  mainWindow = new BrowserWindow({width: 600, height: 300})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -28,7 +28,7 @@ function createWindow () {
     mainWindow = null
   })
 }
-//Pero si preguntan por ti les dire, que haz ido de viaje que vas a volver...
+//
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -50,3 +50,8 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+//Disable default menu bar.
+app.on('browser-window-created',function(e,window) {
+      window.setMenu(null);
+  });
